@@ -21,3 +21,43 @@ Given the user has connectivity
 When the user requests to see the crypto feed
 Then the app should display the latest crypto feed from remote
 ```
+
+### Payload contract
+
+```
+GET /data/top/totaltoptiervolfull
+
+200 RESPONSE
+
+{
+    "Message": "Success",
+    "Data": [
+        {
+            "CoinInfo": {
+                "Id": "7605",
+                "Name": "ETH",
+                "FullName": "Ethereum"
+            },
+            "RAW": {
+                "USD": {
+                    "PRICE": 2089.29,
+                    "CHANGEPCTDAY": -0.14911035600096975
+                }
+            }
+        },
+        {
+            "CoinInfo": {
+                "Id": "1182",
+                "Name": "BTC",
+                "FullName": "Bitcoin"
+            },
+            "RAW": {
+                "USD": {
+                    "PRICE": 2089.29,
+                    "CHANGEPCTDAY": -0.14911035600096975
+                }
+            }
+        }
+    ]
+}
+```
