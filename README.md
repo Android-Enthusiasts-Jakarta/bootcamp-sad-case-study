@@ -4,20 +4,20 @@
 
 ## BDD Specs
 
-### Story: User requests to see the feed
+### Story: User requests to see crypto feed toplist in 24 hours
 
 ### Narrative #1
 
 ```
-As a user
-I want the app to automatically load the feed
-So I can see the feed
+As a online user
+I want the app to automatically load the crypto feed
+So I can see the newest crypto feed
 ```
 
 #### Scenarios (Acceptance criteria)
 
 ```
-Given a user
-When the app is open
-Then the feed is displayed
+Given the user has connectivity
+When the user requests to see the crypto feed
+Then the app should display the latest crypto feed from remote
 ```
