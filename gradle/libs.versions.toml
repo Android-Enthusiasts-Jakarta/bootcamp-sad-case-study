@@ -1,0 +1,51 @@
+[versions]
+# Plugin
+androidGradlePlugin= "8.0.0"
+kotlinAndroid= "1.8.20"
+
+coreKtx = "1.8.0"
+lifecycleRuntimeKtx = "2.3.1"
+
+# Compose
+activityCompose = "1.5.1"
+composeBom = "2023.04.01"
+androidxLifecycle = "2.5.1"
+runtimeTracing = "1.0.0-alpha01"
+navigation= "2.5.3"
+
+# Testing
+junit = "4.13.2"
+extJunit = "1.1.5"
+espressoCore = "3.5.1"
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinAndroid" }
+
+[libraries]
+androidx-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+
+# Compose
+compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+activity-compose = { group = "androidx.activity", name = "activity-compose" }
+ui = { group = "androidx.compose.ui", name = "ui" }
+ui-graphics= { group = "androidx.compose.ui", name = "ui-graphics" }
+ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+material3 = { group = "androidx.compose.material3", name = "material3" }
+material = { group = "androidx.compose.material", name = "material" }
+ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose" }
+lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose" }
+runtime-tracing = { module = "androidx.compose.runtime:runtime-tracing" }
+material3WindowSizeClass = { module = "androidx.compose.material3:material3-window-size-class" }
+navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
+navigation-runtime-ktx = { module = "androidx.navigation:navigation-runtime-ktx", version.ref = "navigation" }
+
+# Testing
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+ext-junit= { group = "androidx.test.ext", name = "junit", version.ref = "extJunit" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+ui-test-manifest= { module = "androidx.compose.ui:ui-test-manifest" }
