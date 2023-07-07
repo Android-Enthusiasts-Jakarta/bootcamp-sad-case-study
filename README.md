@@ -54,6 +54,33 @@ Then the app should display the latest crypto feed from remote
 #### Server error – error course (sad path):
 1. System delivers server error.
 
+## Model Specs
+
+### Crypto Feed
+
+| Property       | Type     |
+|----------------|----------|
+| `CoinInfo`     | `Object` |
+| `Raw`          | `Object` |
+
+##### CoinInfo
+| Property       | Type     |
+|----------------|----------|
+| `Id`           | `String` |
+| `Name`         | `String` |
+| `FullName`     | `String` |
+
+##### Raw
+| Property       | Type     |
+|----------------|----------|
+| `USD`          | `Object` |
+
+##### USD
+| Property       | Type     |
+|----------------|----------|
+| `PRICE`        | `Double` |
+| `CHANGEPCTDAY` | `Long`   |
+
 ### Payload contract
 
 ```
