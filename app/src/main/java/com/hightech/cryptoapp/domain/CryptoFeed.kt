@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:app/src/main/java/com/hightech/cryptoapp/domain/CryptoFeed.kt
 package com.hightech.cryptoapp.domain
+========
+package domain
+>>>>>>>> origin/main:app/src/main/java/domain/CryptoFeed.kt
 
 data class CryptoFeedItem(
     val coinInfo: CoinInfoItem,
