@@ -22,6 +22,38 @@ When the user requests to see the crypto feed
 Then the app should display the latest crypto feed from remote
 ```
 
+## Use Cases
+
+### Load Crypto Feed From Remote Use Case
+
+#### Data:
+- URL
+
+#### Primary course (happy path):
+1. Execute "Load Crypto Feed" command with above data.
+2. System downloads data from the URL.
+3. System validates downloaded data.
+4. System creates crypto feed from valid data.
+5. System delivers crypto feed.
+
+#### Empty data course (sad path):
+1. System delivers no crypto feed.
+
+#### Invalid data – error course (sad path):
+1. System delivers invalid data error.
+
+#### No connectivity – error course (sad path):
+1. System delivers connectivity error.
+
+#### Unauthorized – error course (sad path):
+1. System delivers unauthorized error.
+
+#### Bad request – error course (sad path):
+1. System delivers bad request error.
+
+#### Server error – error course (sad path):
+1. System delivers server error.
+
 ### Payload contract
 
 ```
