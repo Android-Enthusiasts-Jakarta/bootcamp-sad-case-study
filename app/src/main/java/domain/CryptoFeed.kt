@@ -1,4 +1,4 @@
-package com.hightech.cryptoapp
+package domain
 
 data class CryptoFeedItem(
     val coinInfo: CoinInfoItem,
