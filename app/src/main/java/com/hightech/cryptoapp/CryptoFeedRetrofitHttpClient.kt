@@ -10,8 +10,12 @@ sealed class HttpClientResult {
     data class Failure(val throwable: Throwable) : HttpClientResult()
 }
 
-class CryptoFeedRetrofitHttpClient {
-    fun get(): Flow<HttpClientResult> = flow {
+interface HttpClient {
+    fun get(): Flow<HttpClientResult>
+}
+
+class CryptoFeedRetrofitHttpClient: HttpClient {
+    override fun get(): Flow<HttpClientResult> = flow {
         try { } catch (throwable: Throwable) {
             if (throwable is IOException) {
                 emit(HttpClientResult.Failure(Connectivity()))

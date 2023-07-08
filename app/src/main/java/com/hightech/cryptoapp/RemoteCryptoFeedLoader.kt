@@ -4,7 +4,7 @@ import com.hightech.cryptoapp.domain.CryptoFeedResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class RemoteCryptoFeedLoader constructor(private val httpClient: CryptoFeedRetrofitHttpClient) {
+class RemoteCryptoFeedLoader constructor(private val httpClient: HttpClient) {
     fun load(): Flow<CryptoFeedResult> = flow {
         httpClient.get().collect { result ->
             if (result is HttpClientResult.Failure) {
