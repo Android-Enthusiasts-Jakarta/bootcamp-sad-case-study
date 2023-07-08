@@ -25,10 +25,15 @@ class RemoteCryptoFeedLoader constructor(private val httpClient: CryptoFeedRetro
     fun load(): Flow<CryptoFeedResult> = flow {
         httpClient.get().collect { result ->
             if (result is HttpClientResult.Failure) {
+                emit(CryptoFeedResult.Failure(InvalidData()))
+            }
+
+            if (result is HttpClientResult.Failure) {
                 emit(CryptoFeedResult.Failure(Connectivity()))
             }
         }
     }
 }
 
+class InvalidData : Throwable()
 class Connectivity : Throwable()
