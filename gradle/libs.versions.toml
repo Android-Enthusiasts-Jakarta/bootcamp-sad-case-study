@@ -18,6 +18,9 @@ junit = "4.13.2"
 extJunit = "1.1.5"
 espressoCore = "3.5.1"
 
+# Http
+retrofit = "2.9.0"
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
@@ -49,3 +52,6 @@ ext-junit= { group = "androidx.test.ext", name = "junit", version.ref = "extJuni
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 ui-test-manifest= { module = "androidx.compose.ui:ui-test-manifest" }
+
+# Http
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
