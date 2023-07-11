@@ -1,4 +1,4 @@
-package com.hightech.cryptoapp
+package com.hightech.cryptoapp.http.usecases
 
 import com.hightech.cryptoapp.domain.CryptoFeedResult
 import com.hightech.cryptoapp.http.HttpClient
