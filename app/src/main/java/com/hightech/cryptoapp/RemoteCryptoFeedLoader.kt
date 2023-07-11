@@ -1,6 +1,8 @@
 package com.hightech.cryptoapp
 
 import com.hightech.cryptoapp.domain.CryptoFeedResult
+import com.hightech.cryptoapp.http.HttpClient
+import com.hightech.cryptoapp.http.HttpClientResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

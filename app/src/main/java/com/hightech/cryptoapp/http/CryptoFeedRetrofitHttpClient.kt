@@ -1,5 +1,7 @@
-package com.hightech.cryptoapp
+package com.hightech.cryptoapp.http
 
+import com.hightech.cryptoapp.Connectivity
+import com.hightech.cryptoapp.InvalidData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
