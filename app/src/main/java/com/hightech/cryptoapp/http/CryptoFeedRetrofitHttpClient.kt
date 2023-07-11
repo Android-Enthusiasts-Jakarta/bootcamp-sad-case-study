@@ -11,14 +11,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import java.io.IOException
 
-interface CryptoFeedService {
-    @GET("data/top/totaltoptiervolfull")
-    suspend fun get(
-        @Query("limit") limit: Int? = 20,
-        @Query("tsym") tsym: String? = "USD"
-    ): RemoteRootCryptoFeed
-}
-
 class CryptoFeedRetrofitHttpClient constructor(
     private val cryptoFeedService: CryptoFeedService
 ): HttpClient {
