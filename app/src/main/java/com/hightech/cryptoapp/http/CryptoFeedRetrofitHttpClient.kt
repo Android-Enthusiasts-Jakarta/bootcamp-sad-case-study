@@ -7,8 +7,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import retrofit2.HttpException
-import retrofit2.http.GET
-import retrofit2.http.Query
 import java.io.IOException
 
 class CryptoFeedRetrofitHttpClient constructor(
