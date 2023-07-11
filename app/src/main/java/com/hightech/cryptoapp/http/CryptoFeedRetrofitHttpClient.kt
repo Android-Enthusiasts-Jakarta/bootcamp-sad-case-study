@@ -11,7 +11,7 @@ import java.io.IOException
 
 class CryptoFeedRetrofitHttpClient constructor(
     private val cryptoFeedService: CryptoFeedService
-): HttpClient {
+): CryptoFeedHttpClient {
     override fun get(): Flow<HttpClientResult> = flow {
         try {
             emit(HttpClientResult.Success(cryptoFeedService.get()))

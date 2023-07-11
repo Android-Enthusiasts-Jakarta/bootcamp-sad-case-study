@@ -7,6 +7,6 @@ sealed class HttpClientResult {
     data class Failure(val throwable: Throwable) : HttpClientResult()
 }
 
-interface HttpClient {
+interface CryptoFeedHttpClient {
     fun get(): Flow<HttpClientResult>
 }
