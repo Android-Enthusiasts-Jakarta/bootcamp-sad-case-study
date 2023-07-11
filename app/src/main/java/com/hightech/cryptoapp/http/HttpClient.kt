@@ -3,6 +3,7 @@ package com.hightech.cryptoapp.http
 import kotlinx.coroutines.flow.Flow
 
 sealed class HttpClientResult {
+    data class Success(val data: List<RemoteRootCryptoFeed>) : HttpClientResult()
     data class Failure(val throwable: Throwable) : HttpClientResult()
 }
 

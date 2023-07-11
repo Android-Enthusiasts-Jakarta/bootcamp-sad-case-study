@@ -9,6 +9,13 @@ import kotlinx.coroutines.flow.flow
 class RemoteCryptoFeedLoader constructor(private val httpClient: HttpClient) {
     fun load(): Flow<CryptoFeedResult> = flow {
         httpClient.get().collect { result ->
+            if (result is HttpClientResult.Success) {
+                val cryptoFeed = result.data
+                if (cryptoFeed.isEmpty()) {
+                    emit(CryptoFeedResult.Success(emptyList()))
+                }
+            }
+
             if (result is HttpClientResult.Failure) {
                 emit(CryptoFeedResult.Failure(InvalidData()))
             }
