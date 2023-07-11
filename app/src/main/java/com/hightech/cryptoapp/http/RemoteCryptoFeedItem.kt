@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 data class RemoteRootCryptoFeed(
     @Json(name = "Data")
-    val data: List<RemoteCryptoFeedItem>
+    val data: List<RemoteCryptoFeedItem>?
 )
 
 data class RemoteCryptoFeedItem(
