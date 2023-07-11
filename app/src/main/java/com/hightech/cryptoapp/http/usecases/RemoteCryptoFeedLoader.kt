@@ -1,15 +1,17 @@
 package com.hightech.cryptoapp.http.usecases
 
 import com.hightech.cryptoapp.domain.CryptoFeedItemsMapper
+import com.hightech.cryptoapp.domain.CryptoFeedLoader
 import com.hightech.cryptoapp.domain.CryptoFeedResult
-import com.hightech.cryptoapp.http.HttpClient
+import com.hightech.cryptoapp.http.CryptoFeedHttpClient
 import com.hightech.cryptoapp.http.HttpClientResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class RemoteCryptoFeedLoader constructor(private val httpClient: HttpClient) {
-    fun load(): Flow<CryptoFeedResult> = flow {
-        httpClient.get().collect { result ->
+class RemoteCryptoFeedLoader constructor(private val cryptoFeedHttpClient: CryptoFeedHttpClient):
+    CryptoFeedLoader {
+    override fun load(): Flow<CryptoFeedResult> = flow {
+        cryptoFeedHttpClient.get().collect { result ->
             if (result is HttpClientResult.Success) {
                 val cryptoFeed = result.root.data
                 if (!cryptoFeed.isNullOrEmpty()) {
