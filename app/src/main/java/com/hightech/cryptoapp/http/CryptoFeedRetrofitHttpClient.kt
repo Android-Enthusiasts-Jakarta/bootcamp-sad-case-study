@@ -7,11 +7,25 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import retrofit2.HttpException
+import retrofit2.http.GET
+import retrofit2.http.Query
 import java.io.IOException
 
-class CryptoFeedRetrofitHttpClient: HttpClient {
+interface CryptoFeedService {
+    @GET("data/top/totaltoptiervolfull")
+    suspend fun get(
+        @Query("limit") limit: Int? = 20,
+        @Query("tsym") tsym: String? = "USD"
+    ): RemoteRootCryptoFeed
+}
+
+class CryptoFeedRetrofitHttpClient constructor(
+    private val cryptoFeedService: CryptoFeedService
+): HttpClient {
     override fun get(): Flow<HttpClientResult> = flow {
-        try { } catch (throwable: Throwable) {
+        try {
+            emit(HttpClientResult.Success(cryptoFeedService.get()))
+        } catch (throwable: Throwable) {
             if (throwable is IOException) {
                 emit(HttpClientResult.Failure(Connectivity()))
             }
