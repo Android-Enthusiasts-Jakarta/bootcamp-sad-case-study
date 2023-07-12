@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.hightech.cryptoapp.http.usecases.Connectivity
+import com.hightech.cryptoapp.http.usecases.InvalidData
 import com.hightech.cryptoapp.main.factories.RemoteCryptoFeedLoaderFactory
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -76,6 +77,8 @@ class CryptoFeedViewModel constructor(
                         it.copy(
                             failed = if(result.throwable is Connectivity) {
                                 "Connectivity"
+                            } else if(result.throwable is InvalidData) {
+                                "Invalid Data"
                             } else {
                                 "Something Went Wrong"
                             },
