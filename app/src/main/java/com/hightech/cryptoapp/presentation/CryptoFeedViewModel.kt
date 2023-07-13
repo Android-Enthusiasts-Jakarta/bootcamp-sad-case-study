@@ -68,12 +68,18 @@ class CryptoFeedViewModel constructor(
                 if (result is CryptoFeedResult.Failure) {
                     viewModelState.update {
                         it.copy(
-                            failed = if(result.throwable is Connectivity) {
-                                "Connectivity"
-                            } else if(result.throwable is InvalidData) {
-                                "Invalid Data"
-                            } else {
-                                "Something Went Wrong"
+                            failed = when (result.throwable) {
+                                is Connectivity -> {
+                                    "Connectivity"
+                                }
+
+                                is InvalidData -> {
+                                    "Invalid Data"
+                                }
+
+                                else -> {
+                                    "Something Went Wrong"
+                                }
                             },
                             isLoading = false
                         )
