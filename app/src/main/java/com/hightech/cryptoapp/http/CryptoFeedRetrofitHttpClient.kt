@@ -22,9 +22,10 @@ class CryptoFeedRetrofitHttpClient constructor(
 
             if (throwable is HttpException) {
                 if (throwable.code() == 422) {
-                    HttpClientResult.Failure(InvalidData())
+                    emit(HttpClientResult.Failure(InvalidData()))
                 }
             }
+            emit(HttpClientResult.Failure(InvalidData()))
         }
     }.flowOn(Dispatchers.IO)
 }

@@ -3,8 +3,8 @@ package com.hightech.cryptoapp.http
 import com.squareup.moshi.Json
 
 data class RemoteRootCryptoFeed(
-    @Json(name = "Data")
-    val data: List<RemoteCryptoFeedItem>?
+    @Json(name = "")
+    val data: List<RemoteCryptoFeedItem>
 )
 
 data class RemoteCryptoFeedItem(
