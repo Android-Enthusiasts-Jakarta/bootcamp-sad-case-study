@@ -1,6 +1,7 @@
 package com.hightech.cryptoapp.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
@@ -51,6 +52,8 @@ fun CryptoFeedRoute(
     viewModel: CryptoFeedViewModel = viewModel(factory = CryptoFeedViewModel.FACTORY)
 ) {
     val cryptoFeedUiState by viewModel.cryptoFeedUiState.collectAsStateWithLifecycle()
+
+    Log.d("loadCryptoFeed", "$cryptoFeedUiState")
 
     CryptoFeedScreen(
         cryptoFeedUiState = cryptoFeedUiState
@@ -107,7 +110,22 @@ fun CryptoFeedScreen(
                 }
             },
             content = {
-
+                when (cryptoFeedUiState) {
+                    is CryptoFeedUiState.NoCryptoFeed -> {
+                        if (cryptoFeedUiState.failed.isEmpty()) {
+                            Box(
+                                modifier = modifier
+                                    .fillMaxSize()
+                                    .wrapContentSize(Alignment.Center)
+                            ) {
+                                Text(
+                                    "Crypto Feed Empty",
+                                )
+                            }
+                        }
+                    }
+                    else -> {}
+                }
             })
 
         Box(

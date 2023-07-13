@@ -22,6 +22,12 @@ sealed interface CryptoFeedUiState {
     val isLoading: Boolean
     val failed: String
 
+    data class HasCryptoFeed(
+        override val isLoading: Boolean,
+        val cryptoFeeds: List<CryptoFeedItem>,
+        override val failed: String
+    ) : CryptoFeedUiState
+
     data class NoCryptoFeed(
         override val isLoading: Boolean,
         override val failed: String,
@@ -30,7 +36,7 @@ sealed interface CryptoFeedUiState {
 
 data class CryptoFeedViewModelState(
     val isLoading: Boolean = false,
-    val cryptoFeeds: List<CryptoFeedItem>? = null,
+    val cryptoFeeds: List<CryptoFeedItem> = emptyList(),
     val failed: String = ""
 ) {
     fun toCryptoFeedUiState(): CryptoFeedUiState =
@@ -65,21 +71,18 @@ class CryptoFeedViewModel constructor(
     private fun loadCryptoFeed() {
         viewModelScope.launch {
             cryptoFeedLoader.load().collect { result ->
-                if (result is CryptoFeedResult.Failure) {
-                    viewModelState.update {
-                        it.copy(
+                viewModelState.update {
+                    when (result) {
+                        is CryptoFeedResult.Success -> it.copy(
+                            cryptoFeeds = emptyList(),
+                            isLoading = false
+                        )
+
+                        is CryptoFeedResult.Failure -> it.copy(
                             failed = when (result.throwable) {
-                                is Connectivity -> {
-                                    "Connectivity"
-                                }
-
-                                is InvalidData -> {
-                                    "Invalid Data"
-                                }
-
-                                else -> {
-                                    "Something Went Wrong"
-                                }
+                                is Connectivity -> "Connectivity"
+                                is InvalidData -> "Invalid Data"
+                                else -> "Something Went Wrong"
                             },
                             isLoading = false
                         )
