@@ -1,5 +1,6 @@
 package com.hightech.cryptoapp.presentation
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -40,10 +41,19 @@ data class CryptoFeedViewModelState(
     val failed: String = ""
 ) {
     fun toCryptoFeedUiState(): CryptoFeedUiState =
-        CryptoFeedUiState.NoCryptoFeed(
-            isLoading = isLoading,
-            failed = failed
-        )
+        if (cryptoFeeds.isEmpty()) {
+            CryptoFeedUiState.NoCryptoFeed(
+                isLoading = isLoading,
+                failed = failed
+            )
+
+        } else {
+            CryptoFeedUiState.HasCryptoFeed(
+                isLoading = isLoading,
+                cryptoFeeds = cryptoFeeds,
+                failed = failed
+            )
+        }
 }
 
 class CryptoFeedViewModel constructor(
@@ -71,10 +81,11 @@ class CryptoFeedViewModel constructor(
     private fun loadCryptoFeed() {
         viewModelScope.launch {
             cryptoFeedLoader.load().collect { result ->
+                Log.d("loadCryptoFeed", "$result")
                 viewModelState.update {
                     when (result) {
                         is CryptoFeedResult.Success -> it.copy(
-                            cryptoFeeds = emptyList(),
+                            cryptoFeeds = result.cryptoFeedItems,
                             isLoading = false
                         )
 

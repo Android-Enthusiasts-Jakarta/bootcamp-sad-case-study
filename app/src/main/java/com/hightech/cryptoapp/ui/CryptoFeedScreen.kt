@@ -30,6 +30,7 @@ import com.hightech.cryptoapp.presentation.CryptoFeedUiState
 import com.hightech.cryptoapp.presentation.CryptoFeedViewModel
 import com.hightech.cryptoapp.theme.CryptoAppTheme
 import com.hightech.cryptoapp.theme.Purple40
+import com.hightech.cryptoapp.ui.components.CryptoFeedList
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -111,6 +112,13 @@ fun CryptoFeedScreen(
             },
             content = {
                 when (cryptoFeedUiState) {
+                    is CryptoFeedUiState.HasCryptoFeed -> {
+                        CryptoFeedList(
+                            contentModifier = contentModifier,
+                            items = cryptoFeedUiState.cryptoFeeds,
+                        )
+                    }
+
                     is CryptoFeedUiState.NoCryptoFeed -> {
                         if (cryptoFeedUiState.failed.isEmpty()) {
                             Box(
@@ -124,7 +132,6 @@ fun CryptoFeedScreen(
                             }
                         }
                     }
-                    else -> {}
                 }
             })
 
