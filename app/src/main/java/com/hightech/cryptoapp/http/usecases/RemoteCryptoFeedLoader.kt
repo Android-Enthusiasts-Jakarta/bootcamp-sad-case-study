@@ -4,8 +4,10 @@ import android.util.Log
 import com.hightech.cryptoapp.domain.CryptoFeedItemsMapper
 import com.hightech.cryptoapp.domain.CryptoFeedLoader
 import com.hightech.cryptoapp.domain.CryptoFeedResult
+import com.hightech.cryptoapp.http.ConnectivityException
 import com.hightech.cryptoapp.http.CryptoFeedHttpClient
 import com.hightech.cryptoapp.http.HttpClientResult
+import com.hightech.cryptoapp.http.InvalidDataException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -24,12 +26,14 @@ class RemoteCryptoFeedLoader constructor(private val cryptoFeedHttpClient: Crypt
                 }
 
                 is HttpClientResult.Failure -> {
+                    Log.d("loadCryptoFeed", "Failure")
                     when (result.throwable) {
-                        is Connectivity -> {
+                        is ConnectivityException -> {
                             emit(CryptoFeedResult.Failure(Connectivity()))
                         }
 
-                        is InvalidData -> {
+                        is InvalidDataException -> {
+                            Log.d("loadCryptoFeed", "InvalidData")
                             emit(CryptoFeedResult.Failure(InvalidData()))
                         }
                     }
