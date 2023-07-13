@@ -3,8 +3,10 @@ package com.hightech.cryptoapp.http.usecases
 import com.hightech.cryptoapp.domain.CryptoFeedItemsMapper
 import com.hightech.cryptoapp.domain.CryptoFeedLoader
 import com.hightech.cryptoapp.domain.CryptoFeedResult
+import com.hightech.cryptoapp.http.ConnectivityException
 import com.hightech.cryptoapp.http.CryptoFeedHttpClient
 import com.hightech.cryptoapp.http.HttpClientResult
+import com.hightech.cryptoapp.http.InvalidDataException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -22,11 +24,11 @@ class RemoteCryptoFeedLoader constructor(private val cryptoFeedHttpClient: Crypt
             }
 
             if (result is HttpClientResult.Failure) {
-                if (result.throwable is InvalidData) {
+                if (result.throwable is InvalidDataException) {
                     emit(CryptoFeedResult.Failure(InvalidData()))
                 }
 
-                if (result.throwable is Connectivity) {
+                if (result.throwable is ConnectivityException) {
                     emit(CryptoFeedResult.Failure(Connectivity()))
                 }
             }

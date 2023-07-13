@@ -1,7 +1,5 @@
 package com.hightech.cryptoapp.http
 
-import com.hightech.cryptoapp.http.usecases.Connectivity
-import com.hightech.cryptoapp.http.usecases.InvalidData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -17,15 +15,15 @@ class CryptoFeedRetrofitHttpClient constructor(
             emit(HttpClientResult.Success(cryptoFeedService.get()))
         } catch (throwable: Throwable) {
             if (throwable is IOException) {
-                emit(HttpClientResult.Failure(Connectivity()))
+                emit(HttpClientResult.Failure(ConnectivityException()))
             }
 
             if (throwable is HttpException) {
                 if (throwable.code() == 422) {
-                    emit(HttpClientResult.Failure(InvalidData()))
+                    emit(HttpClientResult.Failure(InvalidDataException()))
                 }
             }
-            emit(HttpClientResult.Failure(InvalidData()))
+            emit(HttpClientResult.Failure(InvalidDataException()))
         }
     }.flowOn(Dispatchers.IO)
 }
