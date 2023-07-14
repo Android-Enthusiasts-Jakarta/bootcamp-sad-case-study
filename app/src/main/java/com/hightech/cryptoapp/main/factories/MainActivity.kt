@@ -8,7 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.hightech.cryptoapp.theme.CryptoAppTheme
-import com.hightech.cryptoapp.crypto.feed.ui.CryptoFeedRoute
+import com.hightech.cryptoapp.main.factories.navigation.MainAppNavHost
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
                 ) {
-                    CryptoFeedRoute()
+                    MainAppNavHost()
                 }
             }
         }
