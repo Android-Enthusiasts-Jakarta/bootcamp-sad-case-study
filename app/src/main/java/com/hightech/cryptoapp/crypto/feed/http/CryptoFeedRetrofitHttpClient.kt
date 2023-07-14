@@ -1,4 +1,4 @@
-package com.hightech.cryptoapp.http
+package com.hightech.cryptoapp.crypto.feed.http
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

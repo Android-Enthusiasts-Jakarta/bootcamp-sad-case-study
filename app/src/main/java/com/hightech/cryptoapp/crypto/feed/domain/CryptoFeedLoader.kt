@@ -1,4 +1,4 @@
-package com.hightech.cryptoapp.domain
+package com.hightech.cryptoapp.crypto.feed.domain
 
 import kotlinx.coroutines.flow.Flow
 

@@ -1,6 +1,6 @@
-package com.hightech.cryptoapp.domain
+package com.hightech.cryptoapp.crypto.feed.domain
 
-import com.hightech.cryptoapp.http.RemoteCryptoFeedItem
+import com.hightech.cryptoapp.crypto.feed.http.RemoteCryptoFeedItem
 
 class CryptoFeedItemsMapper {
     companion object {

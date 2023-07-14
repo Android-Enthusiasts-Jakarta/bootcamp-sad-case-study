@@ -8,7 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.hightech.cryptoapp.theme.CryptoAppTheme
-import com.hightech.cryptoapp.ui.CryptoFeedRoute
+import com.hightech.cryptoapp.crypto.feed.ui.CryptoFeedRoute
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

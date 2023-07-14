@@ -1,4 +1,4 @@
-package com.hightech.cryptoapp.presentation
+package com.hightech.cryptoapp.crypto.feed.presentation
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -6,11 +6,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.hightech.cryptoapp.domain.CryptoFeedItem
-import com.hightech.cryptoapp.domain.CryptoFeedLoader
-import com.hightech.cryptoapp.domain.CryptoFeedResult
-import com.hightech.cryptoapp.http.usecases.Connectivity
-import com.hightech.cryptoapp.http.usecases.InvalidData
+import com.hightech.cryptoapp.crypto.feed.domain.CryptoFeedItem
+import com.hightech.cryptoapp.crypto.feed.domain.CryptoFeedLoader
+import com.hightech.cryptoapp.crypto.feed.domain.CryptoFeedResult
+import com.hightech.cryptoapp.crypto.feed.http.usecases.Connectivity
+import com.hightech.cryptoapp.crypto.feed.http.usecases.InvalidData
 import com.hightech.cryptoapp.main.factories.RemoteCryptoFeedLoaderFactory
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

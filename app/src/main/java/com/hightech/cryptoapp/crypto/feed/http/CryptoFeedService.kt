@@ -1,4 +1,4 @@
-package com.hightech.cryptoapp.http
+package com.hightech.cryptoapp.crypto.feed.http
 
 import retrofit2.http.GET
 import retrofit2.http.Query

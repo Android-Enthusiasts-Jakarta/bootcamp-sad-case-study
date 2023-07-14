@@ -1,13 +1,13 @@
-package com.hightech.cryptoapp.http.usecases
+package com.hightech.cryptoapp.crypto.feed.http.usecases
 
 import android.util.Log
-import com.hightech.cryptoapp.domain.CryptoFeedItemsMapper
-import com.hightech.cryptoapp.domain.CryptoFeedLoader
-import com.hightech.cryptoapp.domain.CryptoFeedResult
-import com.hightech.cryptoapp.http.ConnectivityException
-import com.hightech.cryptoapp.http.CryptoFeedHttpClient
-import com.hightech.cryptoapp.http.HttpClientResult
-import com.hightech.cryptoapp.http.InvalidDataException
+import com.hightech.cryptoapp.crypto.feed.domain.CryptoFeedItemsMapper
+import com.hightech.cryptoapp.crypto.feed.domain.CryptoFeedLoader
+import com.hightech.cryptoapp.crypto.feed.domain.CryptoFeedResult
+import com.hightech.cryptoapp.crypto.feed.http.ConnectivityException
+import com.hightech.cryptoapp.crypto.feed.http.CryptoFeedHttpClient
+import com.hightech.cryptoapp.crypto.feed.http.HttpClientResult
+import com.hightech.cryptoapp.crypto.feed.http.InvalidDataException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

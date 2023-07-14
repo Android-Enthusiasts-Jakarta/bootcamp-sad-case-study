@@ -1,4 +1,4 @@
-package com.hightech.cryptoapp.ui.components
+package com.hightech.cryptoapp.crypto.feed.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -24,7 +24,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.hightech.cryptoapp.domain.CryptoFeedItem
+import com.hightech.cryptoapp.crypto.feed.domain.CryptoFeedItem
 
 @Composable
 fun CryptoFeedList(
