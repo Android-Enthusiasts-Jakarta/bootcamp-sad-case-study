@@ -14,16 +14,19 @@ class CryptoFeedRetrofitHttpClient constructor(
         try {
             emit(HttpClientResult.Success(cryptoFeedService.get()))
         } catch (throwable: Throwable) {
-            if (throwable is IOException) {
-                emit(HttpClientResult.Failure(ConnectivityException()))
-            }
-
-            if (throwable is HttpException) {
-                if (throwable.code() == 422) {
+            when(throwable) {
+                is IOException -> {
+                    emit(HttpClientResult.Failure(ConnectivityException()))
+                }
+                is HttpException -> {
+                    if (throwable.code() == 422) {
+                        emit(HttpClientResult.Failure(InvalidDataException()))
+                    }
+                }
+                else -> {
                     emit(HttpClientResult.Failure(InvalidDataException()))
                 }
             }
-            emit(HttpClientResult.Failure(InvalidDataException()))
         }
     }.flowOn(Dispatchers.IO)
 }
