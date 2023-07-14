@@ -39,7 +39,8 @@ fun CryptoFeedRoute(
 
     CryptoFeedScreen(
         cryptoFeedUiState = cryptoFeedUiState,
-        onRefreshCryptoFeed = viewModel::loadCryptoFeed
+        onRefreshCryptoFeed = viewModel::loadCryptoFeed,
+        onNavigateToCryptoDetails = onNavigateToCryptoDetails
     )
 }
 
@@ -49,7 +50,8 @@ fun CryptoFeedScreen(
     modifier: Modifier = Modifier,
     cryptoFeedUiState: CryptoFeedUiState,
     onRefreshCryptoFeed: () -> Unit,
-    ) {
+    onNavigateToCryptoDetails: (CryptoFeedItem) -> Unit
+) {
     val pullRefreshState = rememberPullRefreshState(
         refreshing = cryptoFeedUiState.isLoading,
         onRefresh = onRefreshCryptoFeed
@@ -100,6 +102,7 @@ fun CryptoFeedScreen(
                         CryptoFeedList(
                             contentModifier = contentModifier,
                             items = cryptoFeedUiState.cryptoFeeds,
+                            onNavigateToCryptoDetails = onNavigateToCryptoDetails
                         )
                     }
 

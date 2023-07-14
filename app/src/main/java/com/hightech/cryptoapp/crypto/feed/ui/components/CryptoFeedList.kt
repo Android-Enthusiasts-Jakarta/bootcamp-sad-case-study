@@ -1,6 +1,7 @@
 package com.hightech.cryptoapp.crypto.feed.ui.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -31,6 +32,7 @@ fun CryptoFeedList(
     modifier: Modifier = Modifier,
     contentModifier: Modifier,
     items: List<CryptoFeedItem>,
+    onNavigateToCryptoDetails: (CryptoFeedItem) -> Unit
 ) {
     Column(
         modifier = contentModifier
@@ -41,7 +43,8 @@ fun CryptoFeedList(
             items(items) { cryptoFeed ->
                 Column(
                     modifier = modifier
-                        .fillMaxWidth(),
+                        .fillMaxWidth()
+                        .clickable { onNavigateToCryptoDetails(cryptoFeed) },
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Row(
