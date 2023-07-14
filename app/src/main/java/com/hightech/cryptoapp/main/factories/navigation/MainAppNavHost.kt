@@ -9,12 +9,14 @@ import com.hightech.cryptoapp.crypto.details.navigation.cryptoDetailScreen
 import com.hightech.cryptoapp.crypto.details.navigation.navigateToCryptoDetails
 import com.hightech.cryptoapp.crypto.feed.ui.navigation.cryptoGraph
 import com.hightech.cryptoapp.crypto.feed.ui.navigation.cryptoGraphRoute
+import com.hightech.cryptoapp.main.factories.MainComponent
 
 @Composable
 fun MainAppNavHost(
     modifier: Modifier = Modifier,
     navHostController: NavHostController = rememberNavController(),
-    startDestination: String = cryptoGraphRoute
+    startDestination: String = cryptoGraphRoute,
+    mainComponent: MainComponent
 ) {
     NavHost(
         navController = navHostController,
@@ -22,7 +24,8 @@ fun MainAppNavHost(
         startDestination = startDestination
     ) {
         cryptoGraph(
-            onCryptoClick = navHostController::navigateToCryptoDetails
+            mainComponent = mainComponent,
+            onCryptoClick = navHostController::navigateToCryptoDetails,
         ) {
             cryptoDetailScreen(
                 popBackStack = navHostController::popBackStack
