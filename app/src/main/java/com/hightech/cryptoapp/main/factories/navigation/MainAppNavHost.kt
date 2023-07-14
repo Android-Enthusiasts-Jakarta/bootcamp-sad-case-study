@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.hightech.cryptoapp.crypto.details.navigation.cryptoDetailScreen
 import com.hightech.cryptoapp.crypto.feed.ui.navigation.cryptoGraph
 import com.hightech.cryptoapp.crypto.feed.ui.navigation.cryptoGraphRoute
 
@@ -20,9 +21,11 @@ fun MainAppNavHost(
         startDestination = startDestination
     ) {
         cryptoGraph(
-            onCryptoClick = {}
+            {}
         ) {
-
+            cryptoDetailScreen(
+                popBackStack = navHostController::popBackStack
+            )
         }
     }
 }
