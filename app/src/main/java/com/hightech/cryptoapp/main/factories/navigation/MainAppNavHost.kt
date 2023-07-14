@@ -5,8 +5,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.hightech.cryptoapp.crypto.feed.ui.cryptoGraph
-import com.hightech.cryptoapp.crypto.feed.ui.cryptoGraphRoute
+import com.hightech.cryptoapp.crypto.feed.ui.navigation.cryptoGraph
+import com.hightech.cryptoapp.crypto.feed.ui.navigation.cryptoGraphRoute
 
 @Composable
 fun MainAppNavHost(
