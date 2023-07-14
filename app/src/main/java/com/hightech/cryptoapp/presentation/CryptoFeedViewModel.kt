@@ -78,7 +78,7 @@ class CryptoFeedViewModel constructor(
         loadCryptoFeed()
     }
 
-    private fun loadCryptoFeed() {
+    fun loadCryptoFeed() {
         viewModelScope.launch {
             cryptoFeedLoader.load().collect { result ->
                 Log.d("loadCryptoFeed", "$result")

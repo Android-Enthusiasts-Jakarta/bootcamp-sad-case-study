@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.pullrefresh.PullRefreshIndicator
 import androidx.compose.material.pullrefresh.PullRefreshState
+import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -57,7 +58,8 @@ fun CryptoFeedRoute(
     Log.d("loadCryptoFeed", "$cryptoFeedUiState")
 
     CryptoFeedScreen(
-        cryptoFeedUiState = cryptoFeedUiState
+        cryptoFeedUiState = cryptoFeedUiState,
+        onRefreshCryptoFeed = viewModel::loadCryptoFeed
     )
 }
 
@@ -66,10 +68,11 @@ fun CryptoFeedRoute(
 fun CryptoFeedScreen(
     modifier: Modifier = Modifier,
     cryptoFeedUiState: CryptoFeedUiState,
-) {
+    onRefreshCryptoFeed: () -> Unit,
+    ) {
     val pullRefreshState = rememberPullRefreshState(
         refreshing = cryptoFeedUiState.isLoading,
-        onRefresh = {}
+        onRefresh = onRefreshCryptoFeed
     )
 
     Scaffold(topBar = {
@@ -89,6 +92,7 @@ fun CryptoFeedScreen(
         val contentModifier = modifier
             .padding(it)
             .fillMaxSize()
+            .pullRefresh(pullRefreshState)
 
         LoadingContent(
             pullRefreshState = pullRefreshState,
