@@ -10,8 +10,9 @@ import com.hightech.cryptoapp.crypto.feed.http.HttpClientResult
 import com.hightech.cryptoapp.crypto.feed.http.InvalidDataException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class RemoteCryptoFeedLoader constructor(private val cryptoFeedHttpClient: CryptoFeedHttpClient):
+class RemoteCryptoFeedLoader @Inject constructor(private val cryptoFeedHttpClient: CryptoFeedHttpClient):
     CryptoFeedLoader {
     override fun load(): Flow<CryptoFeedResult> = flow {
         cryptoFeedHttpClient.get().collect { result ->

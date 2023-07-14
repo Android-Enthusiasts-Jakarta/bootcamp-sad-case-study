@@ -18,6 +18,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 sealed interface CryptoFeedUiState {
     val isLoading: Boolean
@@ -56,7 +57,7 @@ data class CryptoFeedViewModelState(
         }
 }
 
-class CryptoFeedViewModel constructor(
+class CryptoFeedViewModel @Inject constructor(
     private val cryptoFeedLoader: CryptoFeedLoader
 ) : ViewModel() {
     private val viewModelState = MutableStateFlow(
@@ -99,16 +100,6 @@ class CryptoFeedViewModel constructor(
                         )
                     }
                 }
-            }
-        }
-    }
-
-    companion object {
-        val FACTORY: ViewModelProvider.Factory = viewModelFactory {
-            initializer {
-                CryptoFeedViewModel(
-                    RemoteCryptoFeedLoaderFactory.createRemoteCryptoFeedLoader()
-                )
             }
         }
     }
