@@ -1,9 +1,11 @@
 package com.hightech.cryptoapp.crypto.feed.ui.navigation
 
+import android.util.Log
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.hightech.cryptoapp.crypto.feed.di.CryptoFeedComponent
 import com.hightech.cryptoapp.crypto.feed.domain.CryptoFeedItem
 import com.hightech.cryptoapp.crypto.feed.presentation.CryptoFeedViewModel
 import com.hightech.cryptoapp.crypto.feed.ui.CryptoFeedRoute
@@ -24,12 +26,14 @@ fun NavGraphBuilder.cryptoGraph(
         composable(
             route = cryptoFeedRoute
         ) {
-            val viewModel: CryptoFeedViewModel = viewModel {
-                mainComponent.cryptoFeedViewModel()
+            val cryptoFeedViewModel: CryptoFeedViewModel = viewModel {
+                mainComponent.cryptoFeedComponent().create().cryptoFeedViewModel()
             }
 
+            Log.d("INSTANCE OF 1", "$cryptoFeedViewModel")
+
             CryptoFeedRoute(
-                viewModel = viewModel,
+                viewModel = cryptoFeedViewModel,
                 onNavigateToCryptoDetails = onCryptoClick
             )
         }

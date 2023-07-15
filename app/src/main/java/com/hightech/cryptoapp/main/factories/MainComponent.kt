@@ -1,16 +1,14 @@
 package com.hightech.cryptoapp.main.factories
 
-import com.hightech.cryptoapp.crypto.feed.presentation.CryptoFeedViewModel
+import com.hightech.cryptoapp.crypto.feed.di.CryptoFeedComponent
 import com.hightech.cryptoapp.frameworks.HttpFactory
 import dagger.Component
 import javax.inject.Singleton
 
 @Component(
     modules = [
-        RemoteCryptoFeedLoaderFactory::class,
-        CryptoFeedHttpClientFactory::class,
-        CryptoFeedServiceFactory::class,
-        HttpFactory::class
+        HttpFactory::class,
+        MainSubcomponents::class
     ]
 )
 @Singleton
@@ -20,5 +18,5 @@ interface MainComponent {
         fun create(): MainComponent
     }
 
-     fun cryptoFeedViewModel(): CryptoFeedViewModel
+    fun cryptoFeedComponent(): CryptoFeedComponent.Factory
 }

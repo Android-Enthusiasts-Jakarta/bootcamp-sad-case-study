@@ -13,10 +13,10 @@ import com.hightech.cryptoapp.main.factories.MainComponent
 
 @Composable
 fun MainAppNavHost(
+    mainComponent: MainComponent,
     modifier: Modifier = Modifier,
     navHostController: NavHostController = rememberNavController(),
     startDestination: String = cryptoGraphRoute,
-    mainComponent: MainComponent
 ) {
     NavHost(
         navController = navHostController,
