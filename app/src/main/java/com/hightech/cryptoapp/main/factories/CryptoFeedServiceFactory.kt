@@ -7,6 +7,7 @@ import retrofit2.Retrofit
 
 @Module
 class CryptoFeedServiceFactory {
+    @FeatureScope
     @Provides
     fun createCryptoFeedService(retrofit: Retrofit): CryptoFeedService {
         return retrofit.create(CryptoFeedService::class.java)
