@@ -8,6 +8,7 @@ import javax.inject.Singleton
 @Component(
     modules = [
         HttpFactory::class,
+        DispatchersModule::class,
         MainSubcomponents::class
     ]
 )
