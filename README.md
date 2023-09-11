@@ -1,8 +1,8 @@
 # Crypto App Case Study
 
-## Crypto Feed Feature Specs
-
 ## BDD Specs
+
+## Crypto Feed Feature Specs
 
 ### Story: User requests to see crypto feed toplist in 24 hours
 
