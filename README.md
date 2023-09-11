@@ -2,7 +2,7 @@
 
 ## BDD Specs
 
-## Crypto Feed Feature Specs
+### Crypto Feed Feature Specs
 
 ### Story: User requests to see crypto feed toplist in 24 hours
 
