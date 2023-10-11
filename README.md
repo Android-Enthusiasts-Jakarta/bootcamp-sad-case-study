@@ -63,19 +63,19 @@ Then the app should display the latest crypto feed from remote
 | `CoinInfo`     | `Object` |
 | `Raw`          | `Object` |
 
-##### CoinInfo
+#### CoinInfo
 | Property       | Type     |
 |----------------|----------|
 | `Id`           | `String` |
 | `Name`         | `String` |
 | `FullName`     | `String` |
 
-##### Raw
+#### Raw
 | Property       | Type     |
 |----------------|----------|
 | `USD`          | `Object` |
 
-##### USD
+#### USD
 | Property       | Type     |
 |----------------|----------|
 | `PRICE`        | `Double` |
