@@ -60,26 +60,26 @@ Then the app should display the latest crypto feed from remote
 
 | Property       | Type     |
 |----------------|----------|
-| `CoinInfo`     | `Object` |
-| `Raw`          | `Object` |
+| `coinInfo`     | `Entity` |
+| `raw`          | `Object` |
 
-##### CoinInfo
+### CoinInfo
 | Property       | Type     |
 |----------------|----------|
-| `Id`           | `String` |
-| `Name`         | `String` |
-| `FullName`     | `String` |
+| `id`           | `String` |
+| `name`         | `String` |
+| `fullName`     | `String` |
 
-#### Raw
+### Raw
 | Property       | Type     |
 |----------------|----------|
-| `USD`          | `Object` |
+| `usd`          | `Object` |
 
-#### USD
+### USD
 | Property       | Type     |
 |----------------|----------|
-| `PRICE`        | `Double` |
-| `CHANGEPCTDAY` | `Long`   |
+| `price`        | `Double` |
+| `changePctDay` | `Long`   |
 
 ### Payload contract
 
