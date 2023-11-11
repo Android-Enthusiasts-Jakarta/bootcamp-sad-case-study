@@ -27,7 +27,7 @@ Then the app should display the latest crypto feed from remote
 ### Load Crypto Feed From Remote Use Case
 
 #### Data:
-- URL
+- 
 
 #### Primary course (happy path):
 1. Execute "Load Crypto Feed" command with above data.
